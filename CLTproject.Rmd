@@ -42,6 +42,8 @@ p+ geom_vline(aes(xintercept=mean(kkardashtemp)),
 print(paste('mean = ', mean(my1000$kkardashtemp),' sd = ',sd(my1000$kkardashtemp)))
 ```
 
+The sample number is 2,  the mean is 51.92, which is close to 50, and the standard deviation is 41.8 and it's close to 42. The higher the sample number the smaller the standard deviation.
+
 ```{r}
 numb=2
 Hdata = Homers_data[sample(1:1000, size=numb*1000, replace=T),"kkardashtemp"]
@@ -84,6 +86,100 @@ print(paste('mean = ', mean(my1000$k4),' sd = ',sd(my1000$k4)))
 
 ```
 
+The number sample is 4, mean is 50.71, which is close to 50. The standard deviation is 20.92, which close to 21.
+
 In this case the stdev was cut in half because the sample size was four. This is what the central limit theorem says. There are also 5 peaks. They go from FFFF,to FFFM, to FFMM to FMMM and finally MMMM.
 
 ## Now finish by adding blocks with numb being 9, then 16, 25, and 36. be sure to mention how the standard deviation progresses as the sample size changes,
+
+
+```{r}
+numb = 9
+Hdata = Homers_data[sample(1:1000,size=numb*1000, replace=T),"kkardashtemp"]
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k4 = x.avg
+
+
+p <- ggplot(my1000, aes(x=k4),col=sex) + 
+  geom_density() +
+
+# Add mean line
+ geom_vline(aes(xintercept=mean(k4)),
+            color="blue", linetype="dashed", size=1)
+p + ggtitle("n = 4") +
+  xlab("temperature") + ylab(" density")
+
+print(paste('mean = ', mean(my1000$k4),' sd = ',sd(my1000$k4)))
+
+```
+
+The number sample is 9, mean is 49.36,which is close to 50, and the standard deviation is 13.6, which close to 14.  
+
+```{r}
+numb = 16
+Hdata = Homers_data[sample(1:1000,size=numb*1000, replace=T),"kkardashtemp"]
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k4 = x.avg
+
+
+p <- ggplot(my1000, aes(x=k4),col=sex) + 
+  geom_density() +
+
+# Add mean line
+ geom_vline(aes(xintercept=mean(k4)),
+            color="blue", linetype="dashed", size=1)
+p + ggtitle("n = 4") +
+  xlab("temperature") + ylab(" density")
+
+print(paste('mean = ', mean(my1000$k4),' sd = ',sd(my1000$k4)))
+
+```  
+
+The number sample is 16, mean is 49.25,which is close to 50 and the standard deviation is 10.7, and it is close to 10.5.
+
+```{r}
+numb = 25
+Hdata = Homers_data[sample(1:1000,size=numb*1000, replace=T),"kkardashtemp"]
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k4 = x.avg
+
+
+p <- ggplot(my1000, aes(x=k4),col=sex) + 
+  geom_density() +
+
+# Add mean line
+ geom_vline(aes(xintercept=mean(k4)),
+            color="blue", linetype="dashed", size=1)
+p + ggtitle("n = 4") +
+  xlab("temperature") + ylab(" density")
+
+print(paste('mean = ', mean(my1000$k4),' sd = ',sd(my1000$k4)))
+
+```
+
+The number sample is 25, mean is 49.58, which is close to 50. The standard deviation is 8.42 which is close to 8.4.
+
+```{r}
+numb = 36
+Hdata = Homers_data[sample(1:1000,size=numb*1000, replace=T),"kkardashtemp"]
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k4 = x.avg
+
+
+p <- ggplot(my1000, aes(x=k4),col=sex) + 
+  geom_density() +
+
+# Add mean line
+ geom_vline(aes(xintercept=mean(k4)),
+            color="blue", linetype="dashed", size=1)
+p + ggtitle("n = 4") +
+  xlab("temperature") + ylab(" density")
+
+print(paste('mean = ', mean(my1000$k4),' sd = ',sd(my1000$k4)))
+
+```
+The number sample is 36, mean is 50.02, which is close to 50. The standard deviation is 6.92, which is close to 7. When the sample number increases, the smaller the standard deviation of the mean becomes.
